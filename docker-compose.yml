@@ -1,0 +1,18 @@
+version: '3.7'
+
+services:
+  fake-oracle-node:
+    hostname: fake-oracle-node
+    image: fake-oracle-node
+    restart: always
+    build:
+      context: .
+      args:
+        - NPM_TOKEN=${NPM_TOKEN}
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "5"
+        max-size: "100m"
+    environment:
+      - ORACLE_NODE_PK=${ORACLE_NODE_PK}
