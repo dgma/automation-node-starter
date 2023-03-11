@@ -7,9 +7,8 @@ name: Build and Deploy
 on:
   # Runs on pushes targeting the default branch
   push:
-    # branches-ignore:
-    #   - "main"
-    branches: ["main"]
+    branches-ignore:
+      - "main"
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -19,16 +18,11 @@ permissions:
   contents: read
   id-token: write
 
-# Allow one concurrent deployment
-concurrency:
-  group: "pages"
-  cancel-in-progress: true
-
 jobs:
   # Build job
   build:
     env:
-      NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      NPM_TOKEN: ${{ secrets.PERSONAL_GITHUB_TOKEN }}
       ORACLE_NODE_PK: ${{ secrets.ORACLE_NODE_PK }}
 
     runs-on: ubuntu-latest
