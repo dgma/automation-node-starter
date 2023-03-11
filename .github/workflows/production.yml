@@ -47,7 +47,7 @@ jobs:
         SOURCE: "."
         REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
         REMOTE_USER: ${{ secrets.REMOTE_USER }}
-        TARGET: /root/web  
+        TARGET: /root/fake-oracle-nodes
         SCRIPT_BEFORE: |
           ls -al
         SCRIPT_AFTER: |
@@ -62,6 +62,6 @@ jobs:
         key: ${{ secrets.SERVER_SSH_KEY }}
         script: 
           export NPM_TOKEN=${{ secrets.PERSONAL_GITHUB_TOKEN }} ORACLE_NODE_PK=${{ secrets.ORACLE_NODE_PK }};
-          cd /root/web;
+          cd /root/fake-oracle-nodes;
           docker compose down;
           docker compose up --build -d
