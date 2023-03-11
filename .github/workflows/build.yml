@@ -28,7 +28,7 @@ jobs:
   # Build job
   build:
     env:
-      NPM_TOKEN: ${{ secrets.PERSONAL_GITHUB_TOKEN }}
+      NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       ORACLE_NODE_PK: ${{ secrets.ORACLE_NODE_PK }}
 
     runs-on: ubuntu-latest
