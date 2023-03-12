@@ -16,3 +16,4 @@ services:
         max-size: "100m"
     environment:
       - ORACLE_NODE_PK=${ORACLE_NODE_PK}
+      - RPC=${RPC}

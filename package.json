@@ -1,10 +1,10 @@
 {
   "name": "oracles-node",
   "version": "0.0.1",
-  "description": "",
+  "description": "Simple js bot to set token prices to fake-oracles on Rabbit network ",
   "main": "index.js",
   "scripts": {
-    "dev": "node index.js"
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
