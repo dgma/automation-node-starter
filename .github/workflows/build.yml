@@ -24,7 +24,7 @@ jobs:
     env:
       NPM_TOKEN: ${{ secrets.PERSONAL_GITHUB_TOKEN }}
       ORACLE_NODE_PK: ${{ secrets.ORACLE_NODE_PK }}
-      RPC: 'https://dgma.dev:8443'
+      RPC: ${{ secrets.RABBIT_RPC }}
 
     runs-on: ubuntu-latest
     steps:

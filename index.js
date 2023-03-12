@@ -7,7 +7,7 @@ const FakeOracleABI = require('@dgma/protocol/abi/contracts/emulation/fakeOracle
 const ETHFakeOracleAddress = deploymentLock.rabbit.ETHFakeOracle.address;
 const USDgmFakeOracleAddress = deploymentLock.rabbit.USDgmFakeOracle.address;
 const wallet_pk = config?.parsed?.ORACLE_NODE_PK || process.env.ORACLE_NODE_PK;
-const rpc = config?.parsed?.RPC || process.env.RPC || 'https://dgma.dev:8443';
+const rpc = config?.parsed?.RPC || process.env.RPC;
 
 const wait = (ms = 0) => new Promise((res) => setTimeout(res, ms));
 
