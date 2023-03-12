@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/dgma/oracles-node#readme",
   "dependencies": {
-    "@dgma/protocol": "^0.1.4-squirrel",
+    "@dgma/protocol": "^0.1.4-monkey",
     "axios": "^1.3.4",
     "eslint": "^8.36.0",
     "ethers": "^5.7.2"

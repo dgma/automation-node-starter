@@ -7,8 +7,6 @@ name: Build and Deploy
 on:
   # Runs on pushes targeting the default branch
   push:
-    # branches-ignore:
-    #   - "main"
     branches: ["main"]
 
   # Allows you to run this workflow manually from the Actions tab
