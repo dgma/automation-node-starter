@@ -32,7 +32,7 @@ async function ETH_FeedUpdater() {
     await ETH_OracleContract.setPrice(utils.parseUnits(newPrice.toString())).then(tx => tx.wait(1))
   }
   await wait(60000);
-  return ping();
+  return ETH_FeedUpdater();
 };
 
 USDgmOracleContract.setPrice(utils.parseUnits("1.0"))
