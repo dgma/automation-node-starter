@@ -23,7 +23,8 @@ jobs:
     env:
       NPM_TOKEN: ${{ secrets.PERSONAL_GITHUB_TOKEN }}
       ORACLE_NODE_PK: ${{ secrets.ORACLE_NODE_PK }}
-      RPC: ${{ secrets.RABBIT_RPC }}
+      RPC_DEV: ${{ secrets.RABBIT_RPC_DEV }}
+      RPC_STG: ${{ secrets.RABBIT_RPC_STG }}
 
     runs-on: ubuntu-latest
     steps:
@@ -60,7 +61,7 @@ jobs:
         username: ${{ secrets.REMOTE_USER }}
         key: ${{ secrets.SERVER_SSH_KEY }}
         script: 
-          export NPM_TOKEN=${{ secrets.PERSONAL_GITHUB_TOKEN }} ORACLE_NODE_PK=${{ secrets.ORACLE_NODE_PK }} RPC=${{ secrets.RABBIT_RPC }};
+          export NPM_TOKEN=${{ secrets.PERSONAL_GITHUB_TOKEN }} ORACLE_NODE_PK=${{ secrets.ORACLE_NODE_PK }} RPC_DEV=${{ secrets.RABBIT_RPC_DEV }} RPC_STG=${{ secrets.RABBIT_RPC_STG }};
           cd /root/fake-oracle-nodes;
           docker compose down;
           docker compose up --build -d
