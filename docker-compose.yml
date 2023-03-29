@@ -3,7 +3,7 @@ version: '3.7'
 services:
   fake-oracle-node-dev:
     hostname: fake-oracle-node-dev
-    image: fake-oracle-node
+    image: fake-oracle-node-dev
     restart: always
     build:
       context: .
