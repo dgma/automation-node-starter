@@ -17,6 +17,7 @@ services:
     environment:
       - ORACLE_NODE_PK=${ORACLE_NODE_PK}
       - RPC=${RPC_DEV}
+      - NETWORK='rabbit.dev'
   fake-oracle-node-stg:
     depends_on: 
       - fake-oracle-node-dev
@@ -31,3 +32,4 @@ services:
     environment:
       - ORACLE_NODE_PK=${ORACLE_NODE_PK}
       - RPC=${RPC_STG}
+      - NETWORK='rabbit.stg'

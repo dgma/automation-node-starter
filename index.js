@@ -4,10 +4,12 @@ const config = require("dotenv").config({ path: './.env.local' });
 const deploymentLock = require('@dgma/protocol/deployment-lock.json');
 const FakeOracleABI = require('@dgma/protocol/abi/contracts/emulation/fakeOracles/IFakeOracle.sol/IFakeOracle.json');
 
-const ETHFakeOracleAddress = deploymentLock.rabbit.ETHFakeOracle.address;
-const USDgmFakeOracleAddress = deploymentLock.rabbit.USDgmFakeOracle.address;
+
 const wallet_pk = config?.parsed?.ORACLE_NODE_PK || process.env.ORACLE_NODE_PK;
 const rpc = config?.parsed?.RPC || process.env.RPC;
+const network = config?.parsed?.NETWORK || process.env.NETWORK;
+const ETHFakeOracleAddress = deploymentLock[network].ETHFakeOracle.address;
+const USDgmFakeOracleAddress = deploymentLock[network].USDgmFakeOracle.address;
 
 const wait = (ms = 0) => new Promise((res) => setTimeout(res, ms));
 
