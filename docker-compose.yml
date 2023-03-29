@@ -1,8 +1,8 @@
 version: '3.7'
 
 services:
-  fake-oracle-node:
-    hostname: fake-oracle-node
+  fake-oracle-node-dev:
+    hostname: fake-oracle-node-dev
     image: fake-oracle-node
     restart: always
     build:
@@ -16,4 +16,18 @@ services:
         max-size: "100m"
     environment:
       - ORACLE_NODE_PK=${ORACLE_NODE_PK}
-      - RPC=${RPC}
+      - RPC=${RPC_DEV}
+  fake-oracle-node-stg:
+    depends_on: 
+      - fake-oracle-node-dev
+    hostname: fake-oracle-node-stg
+    image: fake-oracle-node
+    restart: always
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "5"
+        max-size: "100m"
+    environment:
+      - ORACLE_NODE_PK=${ORACLE_NODE_PK}
+      - RPC=${RPC_STG}
