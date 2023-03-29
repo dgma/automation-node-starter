@@ -8,6 +8,7 @@ const FakeOracleABI = require('@dgma/protocol/abi/contracts/emulation/fakeOracle
 const wallet_pk = config?.parsed?.ORACLE_NODE_PK || process.env.ORACLE_NODE_PK;
 const rpc = config?.parsed?.RPC || process.env.RPC;
 const network = config?.parsed?.NETWORK || process.env.NETWORK;
+
 const ETHFakeOracleAddress = deploymentLock[network].ETHFakeOracle.address;
 const USDgmFakeOracleAddress = deploymentLock[network].USDgmFakeOracle.address;
 
