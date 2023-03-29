@@ -18,3 +18,4 @@ services:
       - ORACLE_NODE_PK=${ORACLE_NODE_PK}
       - RPC=${RPC}
       - NETWORK=rabbit.dev
+      - INTERVAL=180000

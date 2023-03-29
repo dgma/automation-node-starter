@@ -21,7 +21,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Build
-        run: docker compose build;
+        run: docker compose -f docker-compose.stage.yml build;
 
   deploy:
     needs: build

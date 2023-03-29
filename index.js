@@ -8,6 +8,7 @@ const FakeOracleABI = require('@dgma/protocol/abi/contracts/emulation/fakeOracle
 const wallet_pk = config?.parsed?.ORACLE_NODE_PK || process.env.ORACLE_NODE_PK;
 const rpc = config?.parsed?.RPC || process.env.RPC;
 const network = config?.parsed?.NETWORK || process.env.NETWORK;
+const interval = Number(config?.parsed?.INTERVAL || process.env.INTERVAL);
 
 const ETHFakeOracleAddress = deploymentLock[network].ETHFakeOracle.address;
 const USDgmFakeOracleAddress = deploymentLock[network].USDgmFakeOracle.address;
@@ -20,6 +21,7 @@ const wallet = new ethers.Wallet(wallet_pk, provider);
 const ETH_OracleContract = new ethers.Contract(ETHFakeOracleAddress, FakeOracleABI, wallet);
 const USDgmOracleContract = new ethers.Contract(USDgmFakeOracleAddress, FakeOracleABI, wallet);
 
+console.log(`run fake-oracle node for ${network} network with price check interval ${interval}ms`)
 
 async function ETH_FeedUpdater() {
   const response = await axios.get(
@@ -34,7 +36,7 @@ async function ETH_FeedUpdater() {
     console.log('volatility is above minimum, update price')
     await ETH_OracleContract.setPrice(utils.parseUnits(newPrice.toString())).then(tx => tx.wait(1))
   }
-  await wait(60000);
+  await wait(interval);
   return ETH_FeedUpdater();
 };
 
