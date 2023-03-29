@@ -1,8 +1,8 @@
 version: '3.7'
 
 services:
-  fake-oracle-node-dev:
-    hostname: fake-oracle-node-dev
+  fake-oracle-node-stg:
+    hostname: fake-oracle-node-stg
     image: fake-oracle-node
     restart: always
     build:
@@ -17,4 +17,4 @@ services:
     environment:
       - ORACLE_NODE_PK=${ORACLE_NODE_PK}
       - RPC=${RPC}
-      - NETWORK=rabbit.dev
+      - NETWORK=rabbit.stg
