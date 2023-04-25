@@ -15,8 +15,8 @@ jobs:
     env:
       NPM_TOKEN: ${{ secrets.PERSONAL_GITHUB_TOKEN }}
       ORACLE_NODE_PK: ${{ secrets.ORACLE_NODE_PK }}
-      RPC_DEV: ${{ secrets.RABBIT_RPC_DEV }}
-      RPC_STG: ${{ secrets.RABBIT_RPC_STG }}
+      RPC: ${{ secrets.SEPOLIA }} 
+      NETWORK: ${{ vars.SEPOLIA_DEV }}
 
     runs-on: ubuntu-latest
     steps:

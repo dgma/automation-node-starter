@@ -15,7 +15,8 @@ jobs:
     env:
       NPM_TOKEN: ${{ secrets.PERSONAL_GITHUB_TOKEN }}
       ORACLE_NODE_PK: ${{ secrets.ORACLE_NODE_PK }}
-      RPC: ${{ secrets.RABBIT_RPC_STG }}
+      RPC: ${{ secrets.GOERLI }} 
+      NETWORK: ${{ vars.GOERLI_STG }}
 
     runs-on: ubuntu-latest
     steps:
@@ -52,7 +53,7 @@ jobs:
         username: ${{ secrets.REMOTE_USER }}
         key: ${{ secrets.SERVER_SSH_KEY }}
         script: 
-          export NPM_TOKEN=${{ secrets.PERSONAL_GITHUB_TOKEN }} ORACLE_NODE_PK=${{ secrets.ORACLE_NODE_PK }} RPC=${{ secrets.RABBIT_RPC_STG }};
+          export NPM_TOKEN=${{ secrets.PERSONAL_GITHUB_TOKEN }} ORACLE_NODE_PK=${{ secrets.ORACLE_NODE_PK }} RPC=${{ secrets.GOERLI }} NETWORK=${{ vars.GOERLI_STG }};
           cd /root/fake-oracle-nodes;
           docker compose -f docker-compose.stage.yml down;
           docker compose -f docker-compose.stage.yml up --build -d

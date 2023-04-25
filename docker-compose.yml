@@ -17,5 +17,5 @@ services:
     environment:
       - ORACLE_NODE_PK=${ORACLE_NODE_PK}
       - RPC=${RPC}
-      - NETWORK=rabbit.dev
+      - NETWORK=${NETWORK}
       - INTERVAL=180000
