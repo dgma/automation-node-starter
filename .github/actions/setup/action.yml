@@ -13,3 +13,6 @@ runs:
       with:
         path: "**/node_modules"
         key: ${{ runner.os }}-node_modules-${{ hashFiles('**/package-lock.json') }}
+    - run: npm ci
+      shell: bash
+      if: steps.cache.outputs.cache-hit != 'true'
