@@ -3,7 +3,8 @@ name: CD example
 
 on:
   push:
-    branches: ["main"]
+    # example branch name, do not use it for real project
+    branches: ["example-brunch-324fsf4wf"]
 
   workflow_dispatch:
 
