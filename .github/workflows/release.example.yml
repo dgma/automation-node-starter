@@ -1,0 +1,50 @@
+# This file implement example for deployment github workflow
+name: CD example
+
+on:
+  push:
+    branches: ["main"]
+
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    env:
+      NODE_PK: ${{ secrets.NODE_PK }}
+      RPC: ${{ secrets.RPC }} 
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Build
+        run: docker compose build;
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: easingthemes/ssh-deploy@v5.0.0
+        with:
+          SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
+          SOURCE: "."
+          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+          REMOTE_USER: ${{ secrets.REMOTE_USER }}
+          TARGET: /root/automation-node
+  restart:
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.REMOTE_HOST }}
+          username: ${{ secrets.REMOTE_USER }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          script: cd /root/automation-node;
+            export NODE_PK=${{ secrets.NODE_PK }} RPC=${{ secrets.RPC }};
+            docker compose down;
+            docker builder prune -a -f;
+            docker image prune -a -f;
+            docker compose create;
+            docker compose up -d
