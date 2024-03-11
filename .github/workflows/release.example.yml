@@ -15,7 +15,7 @@ jobs:
   build:
     env:
       NODE_PK: ${{ secrets.NODE_PK }}
-      RPC: ${{ secrets.RPC }} 
+      RPC: ${{ secrets.RPC }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -43,7 +43,7 @@ jobs:
           username: ${{ secrets.REMOTE_USER }}
           key: ${{ secrets.SERVER_SSH_KEY }}
           script: cd /root/automation-node;
-            export NODE_PK=${{ secrets.NODE_PK }} RPC=${{ secrets.RPC }};
+            export NODE_PK=${{ secrets.NODE_PK }} RPC=${{ secrets.RPC }} WS_RPC=${{ secrets.WS_RPC}} NETWORK=${{ env.NETWORK }};
             docker compose down;
             docker builder prune -a -f;
             docker image prune -a -f;
