@@ -1,4 +1,4 @@
-version: '3.7'
+version: "3.7"
 
 services:
   automation-node:
@@ -15,3 +15,5 @@ services:
     environment:
       - NODE_PK=${NODE_PK}
       - RPC=${RPC}
+      - WS_RPC=${WS_RPC}
+      - NETWORK=${NETWORK}

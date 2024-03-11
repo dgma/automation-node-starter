@@ -1,23 +1,11 @@
-import * as dotenv from "dotenv";
-import { createClient, http } from "viem";
-import { privateKeyToAccount } from "viem/accounts";
-import { hardhat } from "viem/chains";
-import { example } from "./example";
+import { httpPublicClient } from "./clients";
+import { multicall } from "./contracts";
 
-const config = dotenv.config({ path: "./.env.local" });
+async function main() {
+  const l1BlockNumber = await multicall.read.getBlockNumber();
+  const networkBlockNumber = await httpPublicClient.getBlockNumber();
 
-const node_pk = config?.parsed?.NODE_PK || process.env.NODE_PK;
-const rpc = config?.parsed?.RPC || process.env.RPC;
-
-if (!node_pk || !rpc) {
-  throw new Error("Configuration mistake. Check your env file");
+  console.log(`l1BlockNumber: ${l1BlockNumber}, networkBlockNumber: ${networkBlockNumber}`);
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const nodeClient = createClient({
-  account: privateKeyToAccount(node_pk as `0x${string}`),
-  chain: hardhat,
-  transport: http(rpc),
-});
-
-console.log(example());
+main();
