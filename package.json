@@ -1,11 +1,11 @@
 {
   "name": "automation-node-starter",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Development starter kit for node.js ts web3 automation nodes",
   "main": "index.js",
   "scripts": {
     "dev": "ts-node src",
-    "test": "jest",
+    "test": "jest --passWithNoTests",
     "lint": "eslint src/**/*.ts",
     "prepare": "husky install",
     "typecheck": "tsc --noEmit --project ./tsconfig.json",
