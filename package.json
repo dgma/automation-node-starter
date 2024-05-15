@@ -1,6 +1,6 @@
 {
   "name": "automation-node-starter",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Development starter kit for node.js ts web3 automation nodes",
   "main": "index.js",
   "scripts": {
@@ -33,13 +33,13 @@
   },
   "dependencies": {
     "dotenv": "^16.4.5",
-    "viem": "^2.7.16"
+    "viem": "^2.10.5"
   },
   "devDependencies": {
     "@types/jest": "^29.5.12",
-    "@types/node": "^20.11.24",
-    "@typescript-eslint/eslint-plugin": "^7.1.0",
-    "@typescript-eslint/parser": "^7.1.0",
+    "@types/node": "^20.12.12",
+    "@typescript-eslint/eslint-plugin": "^7.9.0",
+    "@typescript-eslint/parser": "^7.9.0",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-config-standard": "^17.1.0",
@@ -54,6 +54,6 @@
     "prettier": "^3.2.5",
     "ts-jest": "^29.1.2",
     "ts-node": "^10.9.2",
-    "typescript": "^5.3.3"
+    "typescript": "^5.4.5"
   }
 }
