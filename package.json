@@ -1,7 +1,7 @@
 {
-  "name": "automation-node-starter",
+  "name": "nodejs-web3-starter",
   "version": "0.1.0",
-  "description": "Development starter kit for node.js ts web3 automation nodes",
+  "description": "Development starter kit for web3 node.js apps",
   "main": "index.js",
   "repository": {
     "type": "git",
