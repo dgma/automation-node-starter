@@ -13,15 +13,12 @@ permissions:
 
 jobs:
   build:
-    env:
-      NODE_PK: ${{ secrets.NODE_PK }}
-      RPC: ${{ secrets.RPC }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Build
-        run: docker compose build;
+        run: make buildprod;
   deploy:
     runs-on: ubuntu-latest
     steps:
@@ -43,9 +40,9 @@ jobs:
           username: ${{ secrets.REMOTE_USER }}
           key: ${{ secrets.SERVER_SSH_KEY }}
           script: cd /root/automation-node;
-            export NODE_PK=${{ secrets.NODE_PK }} RPC=${{ secrets.RPC }} WS_RPC=${{ secrets.WS_RPC}} NETWORK=${{ env.NETWORK }};
-            docker compose down;
+            printf 'NETWORK=%s \nNODE_ENV=production \n' "${{ env.NETWORK }}" >conf/.env
+            printf 'DOTENV_PRIVATE_KEY_SECRETS_ENV=%s\n' "${{ secrets.DOTENV_PRIVATE_KEY_SECRETS_ENV }}" >conf/.env.keys
+            make clearprod;
             docker builder prune -a -f;
             docker image prune -a -f;
-            docker compose create;
-            docker compose up -d
+            make upprod;
