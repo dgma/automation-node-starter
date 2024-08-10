@@ -2,23 +2,37 @@
 
 # automation-node-starter
 
-Development starter kit for node.js ts web3 automation nodes
+Development starter kit for web3 node.js apps
 
 ## Features
 
-- Typescript & ts-node
-- Jest for unit testing
+- [Typescript](https://www.typescriptlang.org/) & with [tsx](https://tsx.is/)
+- [Jest](https://jestjs.io/) for unit testing
 - linters, code formatter, pre-commit and pre-push hooks
-- Docker & Docker-compose example
+- [Docker](https://www.docker.com/) & [Docker-compose](https://docs.docker.com/compose/) for dev & prod.
 - Custom github action and quality gate workflow for fast CI strategy implementation
+- Flexible env configuration with encryption, thanks to [dotenvx](https://dotenvx.com/)
 
 ## Requirements
 
-- [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)  
-    -   You'll know you've done it right if you can run `git --version`
-- [Node.js](https://nodejs.org/en)
+- [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+  - You'll know you've done it right if you can run `git --version`
+- [Node.js](https://nodejs.org/en) v20+
+- [Make](https://www.gnu.org/software/make/manual/make.html)
 - Optional. [Docker](https://www.docker.com/)
-    - You'll need to run docker if you want to use run production container builds locally
+  - You'll need to run docker if you want to use run production container builds locally
+
+## Installation
+
+1. Configure environments
+
+```sh
+make
+```
+
+```sh
+make
+```
 
 ## Contributing
 

@@ -3,9 +3,13 @@ Dockerfile
 node_modules
 npm-debug.log
 README.md
-.next
 .git
 .gitignore
 .linterstagedrc.json
 jest.config.js
-.env.example
+.husky
+
+conf/.env
+conf/.env.keys
+conf/.example.secrets.env
+conf/.example.env

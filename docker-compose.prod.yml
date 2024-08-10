@@ -1,0 +1,22 @@
+version: "3.7"
+
+services:
+  automation-node-prod:
+    hostname: automation-node-prod
+    image: automation-node-prod
+    restart: always
+    build:
+      context: .
+    command: ["make", "prod"]
+    secrets:
+      - keys
+    env_file:
+      - conf/.env
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "5"
+        max-size: "100m"
+secrets:
+  keys:
+    file: conf/.env.keys
