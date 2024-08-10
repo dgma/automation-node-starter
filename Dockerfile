@@ -16,9 +16,6 @@ WORKDIR /app
 COPY . .
 COPY --from=deps /app/node_modules ./node_modules
 
-ARG NODE_ENV
-ENV NODE_ENV=${NODE_ENV}
-
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 prod-nodejs
 

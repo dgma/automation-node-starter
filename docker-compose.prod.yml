@@ -7,13 +7,16 @@ services:
     restart: always
     build:
       context: .
-      args:
-        - NODE_ENV=production
+    command: ["make", "prod"]
+    secrets:
+      - keys
+    env_file:
+      - conf/.env
     logging:
       driver: "json-file"
       options:
         max-file: "5"
         max-size: "100m"
 secrets:
-  master_key:
-    file: .env.keys
+  keys:
+    file: conf/.env.keys

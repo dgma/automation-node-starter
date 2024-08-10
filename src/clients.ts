@@ -1,7 +1,12 @@
 import { createClient, createPublicClient, webSocket, http } from "viem";
 import { privateKeyToAccount } from "viem/accounts";
+import type { SupportedChains } from "./chains";
 import chains from "./chains";
-import { node_pk, rpc, ws_rpc, network } from "./env";
+
+export const node_pk = process.env.NODE_PK;
+export const rpc = process.env.RPC;
+export const ws_rpc = process.env.WS_RPC;
+export const network = (process.env.NETWORK || "localhost") as SupportedChains;
 
 export const wsPublicClient = createPublicClient({
   chain: chains[network],

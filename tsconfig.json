@@ -11,9 +11,13 @@
     "outDir": "./dist",
     "resolveJsonModule": true,
     "paths": {
-      "src/*": ["./src/*"]
+      "src/*": ["./src/*"],
+      "@contracts/*": ["./src/contracts/*"],
+      "@contracts": ["./src/contracts"],
+      "@clients": ["./src/clients"],
+      "@env": ["./src/env"]
     }
   },
-  "exclude": ["dist", "node_modules"],
-  "include": ["./src", "./configs"]
+  "exclude": ["node_modules"],
+  "include": ["./src"]
 }

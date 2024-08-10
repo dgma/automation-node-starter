@@ -7,14 +7,8 @@ services:
     restart: always
     build:
       context: .
-      args:
-        - NODE_ENV=develop
     command: ["make", "dev"]
-    develop:
-      watch: 
-        # sync static content
-        - path: ./src
-          action: sync
-          target: /app
-          ignore:
-            - node_modules/
+    volumes:
+      - ./src:/app/src:cached
+    env_file:
+      - conf/.env

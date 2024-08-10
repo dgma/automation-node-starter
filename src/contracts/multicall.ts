@@ -1,5 +1,5 @@
 import { getContract } from "viem";
-import { httpClient } from "../clients";
+import { httpClient } from "@clients";
 
 const abi = [
   {

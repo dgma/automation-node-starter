@@ -1,13 +1,13 @@
 SHELL := /bin/bash
 
-.PHONY: init typecheck lint lint-stg test pre-commit pre-push builddev updev watch stopdev cleandev buildprod upprod cleanprod dev prod
+.PHONY: init typecheck lint lint-stg test pre-commit pre-push updev watch buildprod upprod cleanprod dev prod encryptprod
 
-all: init typecheck test
+all: init typecheck
 
 init: 
-	@npm i --legacy-peer-deps
+	@npm i
 
-typecheck: 
+typecheck:
 	@npx tsc --project tsconfig.json
 
 lint: 
@@ -25,33 +25,29 @@ pre-push: lint typecheck test
 
 # docker aliases
 
-builddev:
-	@docker compose build
-
 updev:
 	@docker compose up -d && docker compose logs -f
 
 watch:
 	@docker compose up -d --watch && docker compose logs -f
 
-stopdev: 
-	@docker compose stop
-
-cleandev: 
-	@docker compose down
-
 buildprod:
 	@docker compose -f docker-compose.prod.yml build
 
 upprod:
-	@docker compose -f docker-compose.prod.yml up -d && docker compose logs -f
+	@docker compose -f docker-compose.prod.yml up -d && docker compose -f docker-compose.prod.yml logs -f
 
-cleanprod: 
+clearprod: 
 	@docker compose -f docker-compose.prod.yml down
 
 # shortcuts for docker
-prod :
-	@npx tsx src
+
+prod:
+	npx tsx src
 
 dev:
-	@npx dotenvx run -- tsx --watch src
+	npx tsx --watch src
+
+# encryption setup
+encryptprod:
+	@npx dotenvx encrypt -f conf/.production.secrets.env

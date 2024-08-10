@@ -1,5 +1,7 @@
-import { httpPublicClient } from "./clients";
-import { multicall } from "./contracts";
+/** index file should import envs before anything else */
+import "@env";
+import { httpPublicClient } from "@clients";
+import { multicall } from "@contracts";
 
 async function main() {
   const l1BlockNumber = await multicall.read.getBlockNumber();

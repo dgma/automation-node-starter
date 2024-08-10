@@ -1,18 +1,18 @@
 import * as dotenvx from "@dotenvx/dotenvx";
-import type { SupportedChains } from "./chains";
-// decrypted .env.production file, see decryption logic in makefile
-// more info https://github.com/dotenvx/dotenvx
-const config = dotenvx.config({ path: ".env.production" });
 
-const getEnv = (prop: string) => config?.parsed?.[prop] || process.env[prop];
-
-export const node_pk = getEnv("NODE_PK");
-export const rpc = getEnv("RPC");
-export const ws_rpc = getEnv("WS_RPC");
-export const network = (getEnv("NETWORK") || "localhost") as SupportedChains;
-
-if (!node_pk || !rpc || !ws_rpc || !network) {
-  throw new Error("Configuration mistake. Check your env file");
+if (!process.env.NODE_ENV) {
+  // load env in case of running outside docker
+  dotenvx.config({ path: "conf/.env" });
 }
 
-export default getEnv;
+if (process.env.NODE_ENV === "production") {
+  // decrypted .production.secrets.env file
+  // more info https://github.com/dotenvx/dotenvx
+  dotenvx.config({ path: "/run/secrets/keys" });
+  dotenvx.decrypt("conf/.production.secrets.env");
+  dotenvx.config({ path: "conf/.production.secrets.env" });
+}
+
+if (process.env.NODE_ENV !== "production") {
+  dotenvx.config({ path: "conf/.local.secrets.env" });
+}
