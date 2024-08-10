@@ -24,15 +24,39 @@ Development starter kit for web3 node.js apps
 
 ## Installation
 
-1. Configure environments
-
 ```sh
 make
 ```
 
+## Configuration
+
+### Local development
+
+Create and modify .env and .local.secrets.env files:
+
 ```sh
-make
+cp conf/.example.env conf/.env \
+&& cp conf/.example.secrets.env conf/.local.secrets.env
 ```
+
+### Production
+
+1. Create and modify .env and .production.secrets.env files:
+
+    ```sh
+    rm conf/.production.secrets.env \
+    && cp conf/.example.env conf/.env \
+    && cp conf/.example.secrets.env conf/.production.secrets.env
+    ```
+
+2. Encrypt prod secrets:
+
+    ```sh
+    make encryptprod
+
+    ```
+
+3. Keep generated .env.keys safe and do not commit it into repo
 
 ## Contributing
 
