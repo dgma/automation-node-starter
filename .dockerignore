@@ -9,3 +9,4 @@ README.md
 .linterstagedrc.json
 jest.config.js
 .env.example
+.husky

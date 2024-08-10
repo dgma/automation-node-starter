@@ -1,6 +1,8 @@
-import * as dotenv from "dotenv";
+import * as dotenvx from "@dotenvx/dotenvx";
 import type { SupportedChains } from "./chains";
-const config = dotenv.config({ path: "./.env.local" });
+// decrypted .env.production file, see decryption logic in makefile
+// more info https://github.com/dotenvx/dotenvx
+const config = dotenvx.config({ path: ".env.production" });
 
 const getEnv = (prop: string) => config?.parsed?.[prop] || process.env[prop];
 
