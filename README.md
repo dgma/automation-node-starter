@@ -62,6 +62,6 @@ cp conf/.example.env conf/.env \
 
 Contributions are always welcome! Open a PR or an issue!
 
-Please install the following:
+## Notes
 
 And you probably already have `make` installed... but if not [try looking here.](https://askubuntu.com/questions/161104/how-do-i-install-make)
