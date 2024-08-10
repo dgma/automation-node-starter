@@ -32,12 +32,12 @@ make
 
 ### Local development
 
-Create and modify .env and .local.secrets.env files:
+1. Create and modify .env and .local.secrets.env files:
 
-```sh
-cp conf/.example.env conf/.env \
-&& cp conf/.example.secrets.env conf/.local.secrets.env
-```
+    ```sh
+    cp conf/.example.env conf/.env \
+    && cp conf/.example.secrets.env conf/.local.secrets.env
+    ```
 
 ### Production
 
