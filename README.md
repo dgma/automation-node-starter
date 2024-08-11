@@ -68,6 +68,29 @@ Without docker:
 make start.dev
 ```
 
+```sh
+# development mode, watch & debug
+make start.debug
+```
+
+
+```sh
+# production mode
+make start.prod
+```
+
+With docker
+
+```sh
+# development mode, watch mode & debug
+docker compose up
+```
+
+```sh
+# production mode
+make up.prod
+```
+
 ## Contributing
 
 Contributions are always welcome! Open a PR or an issue!
