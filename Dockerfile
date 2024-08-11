@@ -1,24 +1,30 @@
 # Install dependencies only when needed
-FROM node:20-alpine AS deps
+FROM node:20-alpine AS base
 
+WORKDIR /app
 # Check https://github.com/nodejs/docker-node/tree/b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine to understand why libc6-compat might be needed.
-RUN apk add --no-cache libc6-compat
-WORKDIR /app
+RUN apk update \
+    && apk add --no-cache libc6-compat \
+    && apk add --no-cache make \
+    && apk add --no-cache bash
 
-# Install dependencies
+
+FROM base as deps
 COPY package.json package-lock.json* ./
-RUN npm ci --legacy-peer-deps
+# Install dependencies
+RUN npm ci
 
-# Rebuild the source code only when needed
-FROM node:20-alpine
-RUN apk update && apk add --no-cache make && apk add --no-cache bash
-WORKDIR /app
+FROM deps as runner
 COPY . .
-COPY --from=deps /app/node_modules ./node_modules
-
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 prod-nodejs
 
 USER prod-nodejs
 
-CMD ["make", "prod"]
+FROM runner as dev
+EXPOSE 9229
+CMD ["make", "start.debug.open"]
+
+FROM runner as prod
+CMD ["make", "start.prod"]
+

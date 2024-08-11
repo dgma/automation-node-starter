@@ -9,15 +9,14 @@
     "skipLibCheck": true,
     "noEmit": true,
     "outDir": "./dist",
+    "baseUrl": "./",
     "resolveJsonModule": true,
     "paths": {
-      "src/*": ["./src/*"],
+      "@src/*": ["./src/*"],
       "@contracts/*": ["./src/contracts/*"],
       "@contracts": ["./src/contracts"],
       "@clients": ["./src/clients"],
       "@env": ["./src/env"]
     }
-  },
-  "exclude": ["node_modules"],
-  "include": ["./src"]
+  }
 }

@@ -7,7 +7,9 @@ services:
     restart: always
     build:
       context: .
-    command: ["make", "dev"]
+      target: dev
+    ports:
+      - 9229:9229
     volumes:
       - ./src:/app/src:cached
     env_file:
