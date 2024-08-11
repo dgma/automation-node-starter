@@ -38,4 +38,4 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Build
-        run: make buildprod;
+        run: make build.prod;
