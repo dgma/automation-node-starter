@@ -1,6 +1,6 @@
 {
   "name": "nodejs-web3-starter",
-  "version": "0.2.0",
+  "version": "0.1.0",
   "description": "Development starter kit for web3 node.js apps",
   "main": "index.js",
   "repository": {
