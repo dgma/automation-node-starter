@@ -1,4 +1,4 @@
-import { example } from "./example";
+import { example } from "@src/example";
 
 describe("example", () => {
   it("should log hello world", () => {

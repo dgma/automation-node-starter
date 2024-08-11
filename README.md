@@ -34,29 +34,39 @@ make
 
 1. Create and modify .env and .local.secrets.env files:
 
-    ```sh
-    cp conf/.example.env conf/.env \
-    && cp conf/.example.secrets.env conf/.local.secrets.env
-    ```
+   ```sh
+   cp conf/.example.env conf/.env \
+   && cp conf/.example.secrets.env conf/.local.secrets.env
+   ```
 
 ### Production
 
 1. Create and modify .env and .production.secrets.env files:
 
-    ```sh
-    rm conf/.production.secrets.env \
-    && cp conf/.example.env conf/.env \
-    && cp conf/.example.secrets.env conf/.production.secrets.env
-    ```
+   ```sh
+   rm conf/.production.secrets.env \
+   && cp conf/.example.env conf/.env \
+   && cp conf/.example.secrets.env conf/.production.secrets.env
+   ```
+
+   **note**: you can commit .production.secrets.env after encryption
 
 2. Encrypt prod secrets:
 
-    ```sh
-    make encryptprod
-
-    ```
+   ```sh
+   make encrypt.prod
+   ```
 
 3. Keep generated .env.keys safe and do not commit it into repo
+
+## Running
+
+Without docker:
+
+```sh
+# development mode
+make start.dev
+```
 
 ## Contributing
 
