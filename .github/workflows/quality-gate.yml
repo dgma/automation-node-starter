@@ -21,21 +21,17 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/setup
-      - name: Run typecheck
-        run: make typecheck
+      - run: make typecheck
   test:
     needs: typecheck
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/setup
-      - name: Run unit tests
-        run: make test
+      - run: make test
   build:
     needs: test
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Build
-        run: make build.prod;
+      - uses: actions/checkout@v4
+      - run: make build.prod;
